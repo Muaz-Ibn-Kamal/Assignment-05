@@ -1,16 +1,15 @@
-// State
+
 let coins = 100;
 let favSet = new Set();
 let copyCount = 0;
 
-// Elements
 const coinCountEl = document.getElementById('coinCount');
 const favCountEl  = document.getElementById('favCount');
 const copyCountEl = document.getElementById('copyCount');
 const historyList  = document.getElementById('historyList');
 const clearHistoryBtn = document.getElementById('clearHistoryBtn');
 
-// --------- Time formatting (Asia/Dhaka) ----------
+
 function formatTime() {
   const d = new Date();
   return d.toLocaleString('en-GB', {
@@ -25,7 +24,6 @@ function formatTime() {
   });
 }
 
-// --------- add entry to history ----------
 function addHistory(service) {
   const row = document.createElement('div');
   row.className = "flex justify-between items-center bg-[#FAFAFA] p-3 rounded-2xl";
@@ -39,7 +37,7 @@ function addHistory(service) {
   historyList.prepend(row);
 }
 
-// --------- Clipboard copy ----------
+
 async function copyTextToClipboard(text) {
   if (navigator.clipboard && navigator.clipboard.writeText) {
     try { await navigator.clipboard.writeText(text); return true; } catch(e) {}
@@ -58,11 +56,11 @@ async function copyTextToClipboard(text) {
   } catch(e){ return false; }
 }
 
-// --------- Global click handler ----------
+
 document.addEventListener('click', async (e) => {
   const card = e.target.closest('article.card');
 
-  // Clear history button
+
   if (e.target === clearHistoryBtn) {
     historyList.innerHTML = '';
     return;
@@ -73,23 +71,21 @@ document.addEventListener('click', async (e) => {
   const cards = Array.from(document.querySelectorAll('article.card'));
   const idx = cards.indexOf(card);
 
-  // Heart toggle
   if (e.target.closest('.heart-btn')) {
     const icon = card.querySelector('.heart-icon');
     if (favSet.has(idx)) {
       favSet.delete(idx);
-      icon.src = 'assets/heart.png'; // unliked
+      icon.src = 'assets/heart.png'; 
     } else {
       favSet.add(idx);
-      icon.src = 'assets/heart-filled.png'; // liked
+      icon.src = 'assets/heart-3510.png'; 
     }
     favCountEl.textContent = favSet.size;
     return;
   }
 
-  // Copy action
   if (e.target.closest('.copy-btn')) {
-    const ok = await copyTextToClipboard(svc.number);
+    const ok = await copyText(svc.number);
     if (ok) {
       copyCount += 1;
       copyCountEl.textContent = copyCount;
@@ -100,7 +96,6 @@ document.addEventListener('click', async (e) => {
     return;
   }
 
-  // Call action
   if (e.target.closest('.call-btn')) {
     if (coins < 20) {
       alert('Not enough coins to place a call. You need at least 20 coins.');
@@ -114,7 +109,6 @@ document.addEventListener('click', async (e) => {
   }
 });
 
-// Accessibility: keyboard support
 document.addEventListener('keydown', (e) => {
   if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.copy-btn, .call-btn, .heart-btn')) {
     e.preventDefault();

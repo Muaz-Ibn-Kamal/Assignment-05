@@ -1,318 +1,518 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Emergency Service Directory</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Emergency Service Directory</title>
 
-  <!-- daisyUI -->
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet"/>
+    <!-- daisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" />
 
-  
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-</head>
-<body class="bg-[#F5F7F9]">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-[#F5F7F9]">
+    <!-- Navbar -->
+    <nav
+      class="sticky top-0 z-50 flex justify-between items-center h-[72px] bg-white px-4 md:px-8 shadow-sm"
+    >
+      <div class="flex items-center gap-3">
+        <img src="assets/logo.png" class="w-10 h-10" alt="logo" />
+        <h1
+          class="text-xl md:text-2xl font-extrabold text-[#006747] leading-tight"
+        >
+          Emergency <br class="hidden sm:block" />
+          Service
+        </h1>
+      </div>
 
-  <!-- Navbar -->
-  <nav class="sticky top-0 z-50 flex justify-between items-center h-[72px] bg-white px-4 md:px-8 shadow-sm">
-    <div class="flex items-center gap-3">
-      <img src="assets/logo.png" class="w-10 h-10" alt="logo"/>
-      <h1 class="text-xl md:text-2xl font-extrabold text-[#006747] leading-tight">
-        Emergency <br class="hidden sm:block"/> Service
+      <div class="flex items-center gap-2">
+        <button
+          class="btn btn-sm rounded-full bg-[#41FF6B1A] border-none flex items-center gap-2"
+        >
+          <span id="favCount">0</span>
+          <img src="assets/heart.png" class="w-4 h-4" alt="heart" />
+        </button>
+
+        <button
+          class="btn btn-sm rounded-full bg-[#41FF6B1A] border-none flex items-center gap-2"
+        >
+          <span id="coinCount">100</span>
+          <img src="assets/coin.png" class="h-5 w-5" alt="coin" />
+        </button>
+
+        <button
+          class="btn btn-sm rounded-full bg-[#41FF6B1A] border-none flex items-center gap-2"
+        >
+          <span id="copyCount">0</span> Copy
+          <i class="fa-regular fa-copy"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section
+      class="h-[260px] md:h-[300px] flex flex-col justify-center items-center text-center px-4 bg-gradient-to-r from-[#013223] via-[#006747] to-[#013223]"
+    >
+      <img src="assets/logo-dark.png" class="h-[84px] w-[84px]" alt="logo" />
+      <h1 class="text-white font-bold text-3xl md:text-4xl mt-3">
+        Emergency Service Directory
       </h1>
-    </div>
+      <p class="text-white/90 font-medium text-sm md:text-base max-w-3xl mt-2">
+        Government Emergency Services at Your Fingertip – A Project by
+        Government of the People’s Republic of Bangladesh
+      </p>
+    </section>
 
-    <div class="flex items-center gap-2">
-      <button class="btn btn-sm rounded-full bg-[#41FF6B1A] border-none flex items-center gap-2">
-        <span id="favCount">0</span>
-        <img src="assets/heart.png" class="w-4 h-4" alt="heart"/>
-      </button>
-
-      <button class="btn btn-sm rounded-full bg-[#41FF6B1A] border-none flex items-center gap-2">
-        <span id="coinCount">100</span>
-        <img src="assets/coin.png" class="h-5 w-5" alt="coin"/>
-      </button>
-
-      <button class="btn btn-sm rounded-full bg-[#41FF6B1A] border-none flex items-center gap-2">
-        <span id="copyCount">0</span> Copy
-        <i class="fa-regular fa-copy"></i>
-      </button>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <section class="h-[260px] md:h-[300px] flex flex-col justify-center items-center text-center px-4
-                  bg-gradient-to-r from-[#013223] via-[#006747] to-[#013223]">
-    <img src="assets/logo-dark.png" class="h-[84px] w-[84px]" alt="logo"/>
-    <h1 class="text-white font-bold text-3xl md:text-4xl mt-3">Emergency Service Directory</h1>
-    <p class="text-white/90 font-medium text-sm md:text-base max-w-3xl mt-2">
-      Government Emergency Services at Your Fingertip – A Project by Government of the People’s Republic of Bangladesh
-    </p>
-  </section>
-
-  <!-- Main -->
-  <main class="w-full px-4 md:px-8 py-8">
-    <div class="flex flex-col lg:flex-row gap-4 w-full">
-
-      <!-- Cards (grid) -->
-      <section class="w-full lg:w-3/4">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-
-          <!-- Card 1 -->
-          <article class="card p-6 shadow-2xl bg-white rounded-xl flex flex-col gap-4"
-                   data-service='{"name":"National Emergency Number","number":"999","category":"All"}'>
-            <div class="flex justify-between items-start">
-              <div class="h-[60px] w-[60px] rounded-2xl bg-[#FFE3E2] flex justify-center items-center">
-                <img src="assets/emergency.png" class="w-9 h-9" alt="emergency"/>
+    <!-- Main -->
+    <main class="w-full px-4 md:px-8 py-8">
+      <div class="flex flex-col lg:flex-row gap-4 w-full">
+        <!-- Cards -->
+        <section class="w-full lg:w-3/4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Card 1 -->
+            <article
+              class="card p-6 shadow-2xl bg-white rounded-xl flex flex-col gap-4"
+              data-service='{"name":"National Emergency Number","number":"999","category":"All"}'
+            >
+              <div class="flex justify-between items-start">
+                <div
+                  class="h-[60px] w-[60px] rounded-2xl bg-[#FFE3E2] flex justify-center items-center"
+                >
+                  <img
+                    src="assets/emergency.png"
+                    class="w-9 h-9"
+                    alt="emergency"
+                  />
+                </div>
+                <button
+                  class="heart-btn btn btn-square border-none shadow-none bg-white w-8 h-8 p-1"
+                  aria-label="favorite"
+                >
+                  <img
+                    src="assets/heart.png"
+                    class="heart-icon w-5 h-5"
+                    alt="heart"
+                  />
+                </button>
               </div>
-              <button class="heart-btn btn btn-square border-none shadow-none bg-white w-8 h-8 p-1" aria-label="favorite">
-                <img src="assets/heart.png" class="heart-icon w-5 h-5" alt="heart"/>
-              </button>
-            </div>
-            <h3 class="text-lg md:text-xl font-bold">National Emergency Number</h3>
-            <div class="flex items-center gap-3">
-              <span class="text-3xl font-bold number">999</span>
-              <span class="badge bg-[#F2F2F2] border-0 px-3 py-2 rounded-full text-sm category">All</span>
-            </div>
-            <div class="mt-4 flex gap-2">
-              <button class="copy-btn btn w-1/2 h-10 border border-gray-200 rounded-lg gap-2">
-                <i class="fa-regular fa-copy"></i> Copy
-              </button>
-              <button class="call-btn btn w-1/2 h-10 bg-[#00A63E] hover:bg-green-900 text-white rounded-lg gap-2">
-                <i class="fa-solid fa-phone"></i> Call
-              </button>
-            </div>
-          </article>
-
-          <!-- Card 2 -->
-          <article class="card p-6 shadow-2xl bg-white rounded-xl flex flex-col gap-4"
-                   data-service='{"name":"Police Helpline","number":"999","category":"Police"}'>
-            <div class="flex justify-between items-start">
-              <div class="h-[60px] w-[60px] rounded-2xl bg-[#DFEFFF] flex justify-center items-center">
-                <img src="assets/police.png" class="w-9 h-9" alt="police"/>
+              <h3 class="text-lg md:text-xl font-bold">
+                National Emergency Number
+              </h3>
+              <div class="flex items-center gap-3">
+                <span class="text-3xl font-bold number">999</span>
+                <span
+                  class="badge bg-[#F2F2F2] border-0 px-3 py-2 rounded-full text-sm category"
+                  >All</span
+                >
               </div>
-              <button class="heart-btn btn btn-square border-none shadow-none bg-white w-8 h-8 p-1" aria-label="favorite">
-                <img src="assets/heart.png" class="heart-icon w-5 h-5" alt="heart"/>
-              </button>
-            </div>
-            <h3 class="text-lg md:text-xl font-bold">Police Helpline</h3>
-            <div class="flex items-center gap-3">
-              <span class="text-3xl font-bold number">999</span>
-              <span class="badge bg-[#F2F2F2] border-0 px-3 py-2 rounded-full text-sm category">Police</span>
-            </div>
-            <div class="mt-4 flex gap-2">
-              <button class="copy-btn btn w-1/2 h-10 border border-gray-200 rounded-lg gap-2">
-                <i class="fa-regular fa-copy"></i> Copy
-              </button>
-              <button class="call-btn btn w-1/2 h-10 bg-[#00A63E] hover:bg-green-900 text-white rounded-lg gap-2">
-                <i class="fa-solid fa-phone"></i> Call
-              </button>
-            </div>
-          </article>
-
-          <!-- Card 3 -->
-          <article class="card p-6 shadow-2xl bg-white rounded-xl flex flex-col gap-4"
-                   data-service='{"name":"Fire Service","number":"999","category":"Fire"}'>
-            <div class="flex justify-between items-start">
-              <div class="h-[60px] w-[60px] rounded-2xl bg-[#FFE3E2] flex justify-center items-center">
-                <img src="assets/fire-service.png" class="w-9 h-9" alt="fire"/>
+              <div class="mt-4 flex gap-2">
+                <button
+                  class="copy-btn btn w-1/2 h-10 border border-gray-200 rounded-lg gap-2"
+                >
+                  <i class="fa-regular fa-copy"></i> Copy
+                </button>
+                <button
+                  class="call-btn btn w-1/2 h-10 bg-[#00A63E] hover:bg-green-900 text-white rounded-lg gap-2"
+                >
+                  <i class="fa-solid fa-phone"></i> Call
+                </button>
               </div>
-              <button class="heart-btn btn btn-square border-none shadow-none bg-white w-8 h-8 p-1" aria-label="favorite">
-                <img src="assets/heart.png" class="heart-icon w-5 h-5" alt="heart"/>
-              </button>
-            </div>
-            <h3 class="text-lg md:text-xl font-bold">Fire Service</h3>
-            <div class="flex items-center gap-3">
-              <span class="text-3xl font-bold number">999</span>
-              <span class="badge bg-[#F2F2F2] border-0 px-3 py-2 rounded-full text-sm category">Fire</span>
-            </div>
-            <div class="mt-4 flex gap-2">
-              <button class="copy-btn btn w-1/2 h-10 border border-gray-200 rounded-lg gap-2">
-                <i class="fa-regular fa-copy"></i> Copy
-              </button>
-              <button class="call-btn btn w-1/2 h-10 bg-[#00A63E] hover:bg-green-900 text-white rounded-lg gap-2">
-                <i class="fa-solid fa-phone"></i> Call
-              </button>
-            </div>
-          </article>
+            </article>
 
-          <!-- Card 4 -->
-          <article class="card p-6 shadow-2xl bg-white rounded-xl flex flex-col gap-4"
-                   data-service='{"name":"Ambulance Service","number":"1994-999999","category":"Health"}'>
-            <div class="flex justify-between items-start">
-              <div class="h-[60px] w-[60px] rounded-2xl bg-[#FFE3E2] flex justify-center items-center">
-                <img src="assets/ambulance.png" class="w-9 h-9" alt="ambulance"/>
+            <!-- Card 2 -->
+            <article
+              class="card p-6 shadow-2xl bg-white rounded-xl flex flex-col gap-4"
+              data-service='{"name":"Police Helpline Number","number":"999","category":"Police"}'
+            >
+              <div class="flex justify-between items-start">
+                <div
+                  class="h-[60px] w-[60px] rounded-2xl bg-[#DFEFFF] flex justify-center items-center"
+                >
+                  <img src="assets/police.png" class="w-9 h-9" alt="police" />
+                </div>
+                <button
+                  class="heart-btn btn btn-square border-none shadow-none bg-white w-8 h-8 p-1"
+                  aria-label="favorite"
+                >
+                  <img
+                    src="assets/heart.png"
+                    class="heart-icon w-5 h-5"
+                    alt="heart"
+                  />
+                </button>
               </div>
-              <button class="heart-btn btn btn-square border-none shadow-none bg-white w-8 h-8 p-1" aria-label="favorite">
-                <img src="assets/heart.png" class="heart-icon w-5 h-5" alt="heart"/>
-              </button>
-            </div>
-            <h3 class="text-lg md:text-xl font-bold">Ambulance Service</h3>
-            <div class="flex items-center gap-3">
-              <span class="text-3xl font-bold number">1994-999999</span>
-              <span class="badge bg-[#F2F2F2] border-0 px-3 py-2 rounded-full text-sm category">Health</span>
-            </div>
-            <div class="mt-4 flex gap-2">
-              <button class="copy-btn btn w-1/2 h-10 border border-gray-200 rounded-lg gap-2">
-                <i class="fa-regular fa-copy"></i> Copy
-              </button>
-              <button class="call-btn btn w-1/2 h-10 bg-[#00A63E] hover:bg-green-900 text-white rounded-lg gap-2">
-                <i class="fa-solid fa-phone"></i> Call
-              </button>
-            </div>
-          </article>
-
-          <!-- Card 5 -->
-          <article class="card p-6 shadow-2xl bg-white rounded-xl flex flex-col gap-4"
-                   data-service='{"name":"Disaster Management","number":"106","category":"Disaster"}'>
-            <div class="flex justify-between items-start">
-              <div class="h-[60px] w-[60px] rounded-2xl bg-[#DFEFFF] flex justify-center items-center">
-                <img src="assets/disaster.png" class="w-9 h-9" alt="disaster"/>
+              <h3 class="text-lg md:text-xl font-bold">Police Helpline Number</h3>
+              <div class="flex items-center gap-3">
+                <span class="text-3xl font-bold number">999</span>
+                <span
+                  class="badge bg-[#F2F2F2] border-0 px-3 py-2 rounded-full text-sm category"
+                  >Police</span
+                >
               </div>
-              <button class="heart-btn btn btn-square border-none shadow-none bg-white w-8 h-8 p-1" aria-label="favorite">
-                <img src="assets/heart.png" class="heart-icon w-5 h-5" alt="heart"/>
-              </button>
-            </div>
-            <h3 class="text-lg md:text-xl font-bold">Disaster Management</h3>
-            <div class="flex items-center gap-3">
-              <span class="text-3xl font-bold number">106</span>
-              <span class="badge bg-[#F2F2F2] border-0 px-3 py-2 rounded-full text-sm category">Disaster</span>
-            </div>
-            <div class="mt-4 flex gap-2">
-              <button class="copy-btn btn w-1/2 h-10 border border-gray-200 rounded-lg gap-2">
-                <i class="fa-regular fa-copy"></i> Copy
-              </button>
-              <button class="call-btn btn w-1/2 h-10 bg-[#00A63E] hover:bg-green-900 text-white rounded-lg gap-2">
-                <i class="fa-solid fa-phone"></i> Call
-              </button>
-            </div>
-          </article>
-
-          <!-- Card 6 -->
-          <article class="card p-6 shadow-2xl bg-white rounded-xl flex flex-col gap-4"
-                   data-service='{"name":"Child Helpline","number":"1098","category":"Children"}'>
-            <div class="flex justify-between items-start">
-              <div class="h-[60px] w-[60px] rounded-2xl bg-[#FFE3E2] flex justify-center items-center">
-                <img src="assets/child.png" class="w-9 h-9" alt="child"/>
+              <div class="mt-4 flex gap-2">
+                <button
+                  class="copy-btn btn w-1/2 h-10 border border-gray-200 rounded-lg gap-2"
+                >
+                  <i class="fa-regular fa-copy"></i> Copy
+                </button>
+                <button
+                  class="call-btn btn w-1/2 h-10 bg-[#00A63E] hover:bg-green-900 text-white rounded-lg gap-2"
+                >
+                  <i class="fa-solid fa-phone"></i> Call
+                </button>
               </div>
-              <button class="heart-btn btn btn-square border-none shadow-none bg-white w-8 h-8 p-1" aria-label="favorite">
-                <img src="assets/heart.png" class="heart-icon w-5 h-5" alt="heart"/>
-              </button>
-            </div>
-            <h3 class="text-lg md:text-xl font-bold">Child Helpline</h3>
-            <div class="flex items-center gap-3">
-              <span class="text-3xl font-bold number">1098</span>
-              <span class="badge bg-[#F2F2F2] border-0 px-3 py-2 rounded-full text-sm category">Children</span>
-            </div>
-            <div class="mt-4 flex gap-2">
-              <button class="copy-btn btn w-1/2 h-10 border border-gray-200 rounded-lg gap-2">
-                <i class="fa-regular fa-copy"></i> Copy
-              </button>
-              <button class="call-btn btn w-1/2 h-10 bg-[#00A63E] hover:bg-green-900 text-white rounded-lg gap-2">
-                <i class="fa-solid fa-phone"></i> Call
-              </button>
-            </div>
-          </article>
+            </article>
 
-          <!-- Card 7 -->
-          <article class="card p-6 shadow-2xl bg-white rounded-xl flex flex-col gap-4"
-                   data-service='{"name":"Women Helpline","number":"109","category":"Women"}'>
-            <div class="flex justify-between items-start">
-              <div class="h-[60px] w-[60px] rounded-2xl bg-[#DFEFFF] flex justify-center items-center">
-                <img src="assets/women.png" class="w-9 h-9" alt="women"/>
+            <!-- Card 3 -->
+            <article
+              class="card p-6 shadow-2xl bg-white rounded-xl flex flex-col gap-4"
+              data-service='{"name":"Fire Service Number","number":"999","category":"Fire"}'
+            >
+              <div class="flex justify-between items-start">
+                <div
+                  class="h-[60px] w-[60px] rounded-2xl bg-[#FFE3E2] flex justify-center items-center"
+                >
+                  <img
+                    src="assets/fire-service.png"
+                    class="w-9 h-9"
+                    alt="fire"
+                  />
+                </div>
+                <button
+                  class="heart-btn btn btn-square border-none shadow-none bg-white w-8 h-8 p-1"
+                  aria-label="favorite"
+                >
+                  <img
+                    src="assets/heart.png"
+                    class="heart-icon w-5 h-5"
+                    alt="heart"
+                  />
+                </button>
               </div>
-              <button class="heart-btn btn btn-square border-none shadow-none bg-white w-8 h-8 p-1" aria-label="favorite">
-                <img src="assets/heart.png" class="heart-icon w-5 h-5" alt="heart"/>
-              </button>
-            </div>
-            <h3 class="text-lg md:text-xl font-bold">Women Helpline</h3>
-            <div class="flex items-center gap-3">
-              <span class="text-3xl font-bold number">109</span>
-              <span class="badge bg-[#F2F2F2] border-0 px-3 py-2 rounded-full text-sm category">Women</span>
-            </div>
-            <div class="mt-4 flex gap-2">
-              <button class="copy-btn btn w-1/2 h-10 border border-gray-200 rounded-lg gap-2">
-                <i class="fa-regular fa-copy"></i> Copy
-              </button>
-              <button class="call-btn btn w-1/2 h-10 bg-[#00A63E] hover:bg-green-900 text-white rounded-lg gap-2">
-                <i class="fa-solid fa-phone"></i> Call
-              </button>
-            </div>
-          </article>
-
-          <!-- Card 8 -->
-          <article class="card p-6 shadow-2xl bg-white rounded-xl flex flex-col gap-4"
-                   data-service='{"name":"Road Accident Helpline","number":"16430","category":"Transport"}'>
-            <div class="flex justify-between items-start">
-              <div class="h-[60px] w-[60px] rounded-2xl bg-[#FFE3E2] flex justify-center items-center">
-                <img src="assets/road.png" class="w-9 h-9" alt="road"/>
+              <h3 class="text-lg md:text-xl font-bold">Fire Service Number   </h3>
+              <div class="flex items-center gap-3">
+                <span class="text-3xl font-bold number">999</span>
+                <span
+                  class="badge bg-[#F2F2F2] border-0 px-3 py-2 rounded-full text-sm category"
+                  >Fire</span
+                >
               </div>
-              <button class="heart-btn btn btn-square border-none shadow-none bg-white w-8 h-8 p-1" aria-label="favorite">
-                <img src="assets/heart.png" class="heart-icon w-5 h-5" alt="heart"/>
-              </button>
-            </div>
-            <h3 class="text-lg md:text-xl font-bold">Road Accident Helpline</h3>
-            <div class="flex items-center gap-3">
-              <span class="text-3xl font-bold number">16430</span>
-              <span class="badge bg-[#F2F2F2] border-0 px-3 py-2 rounded-full text-sm category">Transport</span>
-            </div>
-            <div class="mt-4 flex gap-2">
-              <button class="copy-btn btn w-1/2 h-10 border border-gray-200 rounded-lg gap-2">
-                <i class="fa-regular fa-copy"></i> Copy
-              </button>
-              <button class="call-btn btn w-1/2 h-10 bg-[#00A63E] hover:bg-green-900 text-white rounded-lg gap-2">
-                <i class="fa-solid fa-phone"></i> Call
-              </button>
-            </div>
-          </article>
-
-          <!-- Card 9 -->
-          <article class="card p-6 shadow-2xl bg-white rounded-xl flex flex-col gap-4"
-                   data-service='{"name":"Blood Donation Helpline","number":"16231","category":"Health"}'>
-            <div class="flex justify-between items-start">
-              <div class="h-[60px] w-[60px] rounded-2xl bg-[#DFEFFF] flex justify-center items-center">
-                <img src="assets/blood.png" class="w-9 h-9" alt="blood"/>
+              <div class="mt-4 flex gap-2">
+                <button
+                  class="copy-btn btn w-1/2 h-10 border border-gray-200 rounded-lg gap-2"
+                >
+                  <i class="fa-regular fa-copy"></i> Copy
+                </button>
+                <button
+                  class="call-btn btn w-1/2 h-10 bg-[#00A63E] hover:bg-green-900 text-white rounded-lg gap-2"
+                >
+                  <i class="fa-solid fa-phone"></i> Call
+                </button>
               </div>
-              <button class="heart-btn btn btn-square border-none shadow-none bg-white w-8 h-8 p-1" aria-label="favorite">
-                <img src="assets/heart.png" class="heart-icon w-5 h-5" alt="heart"/>
-              </button>
-            </div>
-            <h3 class="text-lg md:text-xl font-bold">Blood Donation Helpline</h3>
-            <div class="flex items-center gap-3">
-              <span class="text-3xl font-bold number">16231</span>
-              <span class="badge bg-[#F2F2F2] border-0 px-3 py-2 rounded-full text-sm category">Health</span>
-            </div>
-            <div class="mt-4 flex gap-2">
-              <button class="copy-btn btn w-1/2 h-10 border border-gray-200 rounded-lg gap-2">
-                <i class="fa-regular fa-copy"></i> Copy
-              </button>
-              <button class="call-btn btn w-1/2 h-10 bg-[#00A63E] hover:bg-green-900 text-white rounded-lg gap-2">
-                <i class="fa-solid fa-phone"></i> Call
-              </button>
-            </div>
-          </article>
+            </article>
 
-        </div>
-      </section>
+            <!-- Card 4 -->
+            <article
+              class="card p-6 shadow-2xl bg-white rounded-xl flex flex-col gap-4"
+              data-service='{"name":"Ambulance Service","number":"1994-999999","category":"Health"}'
+            >
+              <div class="flex justify-between items-start">
+                <div
+                  class="h-[60px] w-[60px] rounded-2xl bg-[#FFE3E2] flex justify-center items-center"
+                >
+                  <img
+                    src="assets/ambulance.png"
+                    class="w-9 h-9"
+                    alt="ambulance"
+                  />
+                </div>
+                <button
+                  class="heart-btn btn btn-square border-none shadow-none bg-white w-8 h-8 p-1"
+                  aria-label="favorite"
+                >
+                  <img
+                    src="assets/heart.png"
+                    class="heart-icon w-5 h-5"
+                    alt="heart"
+                  />
+                </button>
+              </div>
+              <h3 class="text-lg md:text-xl font-bold">Ambulance Service</h3>
+              <div class="flex items-center gap-3">
+                <span class="text-3xl font-bold number">1994-999999</span>
+                <span
+                  class="badge bg-[#F2F2F2] border-0 px-3 py-2 rounded-full text-sm category"
+                  >Health</span
+                >
+              </div>
+              <div class="mt-4 flex gap-2">
+                <button
+                  class="copy-btn btn w-1/2 h-10 border border-gray-200 rounded-lg gap-2"
+                >
+                  <i class="fa-regular fa-copy"></i> Copy
+                </button>
+                <button
+                  class="call-btn btn w-1/2 h-10 bg-[#00A63E] hover:bg-green-900 text-white rounded-lg gap-2"
+                >
+                  <i class="fa-solid fa-phone"></i> Call
+                </button>
+              </div>
+            </article>
 
-      <!-- History -->
-      <aside class="w-full lg:w-1/4 bg-white p-4 md:p-6 rounded-xl h-fit">
-        <div class="flex justify-between items-center mb-3">
-          <div class="flex items-center gap-2">
-            <img src="assets/—Pngtree—8 o clock_19228805.png" class="h-6 w-6" alt="clock"/>
-            <h2 class="font-semibold">Call History</h2>
+
+            <!-- Card 5 -->
+            <article
+              class="card p-6 shadow-2xl bg-white rounded-xl flex flex-col gap-4"
+              data-service='{"name":"Women & Child Helpline","number":"1098","category":"Women & Child Helpline"}'
+            >
+              <div class="flex justify-between items-start">
+                <div
+                  class="h-[60px] w-[60px] rounded-2xl bg-[#FFE3E2] flex justify-center items-center"
+                >
+                  <img src="assets/emergency.png" class="w-9 h-9" alt="Women & Child Helpline" />
+                </div>
+                <button
+                  class="heart-btn btn btn-square border-none shadow-none bg-white w-8 h-8 p-1"
+                  aria-label="favorite"
+                >
+                  <img
+                    src="assets/heart.png"
+                    class="heart-icon w-5 h-5"
+                    alt="heart"
+                  />
+                </button>
+              </div>
+              <h3 class="text-lg md:text-xl font-bold">Women & Child Helpline</h3>
+              <div class="flex items-center gap-3">
+                <span class="text-3xl font-bold number">109</span>
+                <span
+                  class="badge bg-[#F2F2F2] border-0 px-3 py-2 rounded-full text-sm category"
+                  >Women & Child Helpline</span
+                >
+              </div>
+              <div class="mt-4 flex gap-2">
+                <button
+                  class="copy-btn btn w-1/2 h-10 border border-gray-200 rounded-lg gap-2"
+                >
+                  <i class="fa-regular fa-copy"></i> Copy
+                </button>
+                <button
+                  class="call-btn btn w-1/2 h-10 bg-[#00A63E] hover:bg-green-900 text-white rounded-lg gap-2"
+                >
+                  <i class="fa-solid fa-phone"></i> Call
+                </button>
+              </div>
+            </article>
+
+            <!-- Card 6     -->
+            <article
+              class="card p-6 shadow-2xl bg-white rounded-xl flex flex-col gap-4"
+              data-service='{"name":"Anti-Corruption Helpline","number":"106","category":"Govt."}'
+            >
+              <div class="flex justify-between items-start">
+                <div
+                  class="h-[60px] w-[60px] rounded-2xl bg-[#DFEFFF] flex justify-center items-center"
+                >
+                  <img src="assets/emergency.png" class="w-9 h-9" alt="Anti-Corruption Helpline" />
+                </div>
+                <button
+                  class="heart-btn btn btn-square border-none shadow-none bg-white w-8 h-8 p-1"
+                  aria-label="favorite"
+                >
+                  <img
+                    src="assets/heart.png"
+                    class="heart-icon w-5 h-5"
+                    alt="heart"
+                  />
+                </button>
+              </div>
+              <h3 class="text-lg md:text-xl font-bold">Anti-Corruption Helpline</h3>
+              <div class="flex items-center gap-3">
+                <span class="text-3xl font-bold number">106</span>
+                <span
+                  class="badge bg-[#F2F2F2] border-0 px-3 py-2 rounded-full text-sm category"
+                  >Anti-Corruption </span
+                >
+              </div>
+              <div class="mt-4 flex gap-2">
+                <button
+                  class="copy-btn btn w-1/2 h-10 border border-gray-200 rounded-lg gap-2"
+                >
+                  <i class="fa-regular fa-copy"></i> Copy
+                </button>
+                <button
+                  class="call-btn btn w-1/2 h-10 bg-[#00A63E] hover:bg-green-900 text-white rounded-lg gap-2"
+                >
+                  <i class="fa-solid fa-phone"></i> Call
+                </button>
+              </div>
+            </article>
+
+            <!-- Card 7  -->
+            <article
+              class="card p-6 shadow-2xl bg-white rounded-xl flex flex-col gap-4"
+              data-service='{"name":"Electricity Helpline","number":"16430","category":"Electricity Outage"}'
+            >
+              <div class="flex justify-between items-start">
+                <div
+                  class="h-[60px] w-[60px] rounded-2xl bg-[#FFE3E2] flex justify-center items-center"
+                >
+                  <img src="assets/emergency.png" class="w-9 h-9" alt="road" />
+                </div>
+                <button
+                  class="heart-btn btn btn-square border-none shadow-none bg-white w-8 h-8 p-1"
+                  aria-label="favorite"
+                >
+                  <img
+                    src="assets/heart.png"
+                    class="heart-icon w-5 h-5"
+                    alt="heart"
+                  />
+                </button>
+              </div>
+              <h3 class="text-lg md:text-xl font-bold">
+                Electricity Helpline
+              </h3>
+              <div class="flex items-center gap-3">
+                <span class="text-3xl font-bold number">16216</span>
+                <span
+                  class="badge bg-[#F2F2F2] border-0 px-3 py-2 rounded-full text-sm category"
+                  >Electricity</span
+                >
+              </div>
+              <div class="mt-4 flex gap-2">
+                <button
+                  class="copy-btn btn w-1/2 h-10 border border-gray-200 rounded-lg gap-2"
+                >
+                  <i class="fa-regular fa-copy"></i> Copy
+                </button>
+                <button
+                  class="call-btn btn w-1/2 h-10 bg-[#00A63E] hover:bg-green-900 text-white rounded-lg gap-2"
+                >
+                  <i class="fa-solid fa-phone"></i> Call
+                </button>
+              </div>
+            </article>
+
+            <!-- Card 8 -->
+            <article
+              class="card p-6 shadow-2xl bg-white rounded-xl flex flex-col gap-4"
+              data-service='{"name":"Brac Helpline","number":"16231","category":"Brac"}'
+            >
+              <div class="flex justify-between items-start">
+                <div
+                  class="h-[60px] w-[60px] rounded-2xl bg-[#DFEFFF] flex justify-center items-center"
+                >
+                  <img src="assets/brac.png" class="w-9 h-9" alt="blood" />
+                </div>
+                <button
+                  class="heart-btn btn btn-square border-none shadow-none bg-white w-8 h-8 p-1"
+                  aria-label="favorite"
+                >
+                  <img
+                    src="assets/heart.png"
+                    class="heart-icon w-5 h-5"
+                    alt="heart"
+                  />
+                </button>
+              </div>
+              <h3 class="text-lg md:text-xl font-bold">
+                Brac Helpline
+              </h3>
+              <div class="flex items-center gap-3">
+                <span class="text-3xl font-bold number">16445</span>
+                <span
+                  class="badge bg-[#F2F2F2] border-0 px-3 py-2 rounded-full text-sm category"
+                  >NGO</span
+                >
+              </div>
+              <div class="mt-4 flex gap-2">
+                <button
+                  class="copy-btn btn w-1/2 h-10 border border-gray-200 rounded-lg gap-2"
+                >
+                  <i class="fa-regular fa-copy"></i> Copy
+                </button>
+                <button
+                  class="call-btn btn w-1/2 h-10 bg-[#00A63E] hover:bg-green-900 text-white rounded-lg gap-2"
+                >
+                  <i class="fa-solid fa-phone"></i> Call
+                </button>
+              </div>
+            </article>
+                        <!-- Card 8 -->
+            <article
+              class="card p-6 shadow-2xl bg-white rounded-xl flex flex-col gap-4"
+              data-service='{"name":"Bangladesh Railway Helpline","number":"16231","category":"Bangladesh Railway "}'
+            >
+              <div class="flex justify-between items-start">
+                <div
+                  class="h-[60px] w-[60px] rounded-2xl bg-[#DFEFFF] flex justify-center items-center"
+                >
+                  <img src="assets/Bangladesh-Railway.png" class="w-9 h-9" alt="blood" />
+                </div>
+                <button
+                  class="heart-btn btn btn-square border-none shadow-none bg-white w-8 h-8 p-1"
+                  aria-label="favorite"
+                >
+                  <img
+                    src="assets/heart.png"
+                    class="heart-icon w-5 h-5"
+                    alt="heart"
+                  />
+                </button>
+              </div>
+              <h3 class="text-lg md:text-xl font-bold">
+                Bangladesh Railway Helpline
+              </h3>
+              <div class="flex items-center gap-3">
+                <span class="text-3xl font-bold number">163</span>
+                <span
+                  class="badge bg-[#F2F2F2] border-0 px-3 py-2 rounded-full text-sm category"
+                  >Travel</span
+                >
+              </div>
+              <div class="mt-4 flex gap-2">
+                <button
+                  class="copy-btn btn w-1/2 h-10 border border-gray-200 rounded-lg gap-2"
+                >
+                  <i class="fa-regular fa-copy"></i> Copy
+                </button>
+                <button
+                  class="call-btn btn w-1/2 h-10 bg-[#00A63E] hover:bg-green-900 text-white rounded-lg gap-2"
+                >
+                  <i class="fa-solid fa-phone"></i> Call
+                </button>
+              </div>
+            </article> 
           </div>
-          <button id="clearHistoryBtn" class="btn btn-sm bg-[#00A63E] hover:bg-green-900 rounded-full text-white">Clear</button>
-        </div>
-        <div id="historyList" class="flex flex-col gap-2">
-          <!-- populated dynamically -->
-        </div>
-      </aside>
+        </section>
 
-    </div>
-  </main>
+        <!-- History -->
+        <aside class="w-full lg:w-1/4 bg-white p-4 md:p-6 rounded-xl h-fit">
+          <div class="flex justify-between items-center mb-3">
+            <div class="flex items-center gap-2">
+              <img
+                src="assets/—Pngtree—8 o clock_19228805.png"
+                class="h-6 w-6"
+                alt="clock"
+              />
+              <h2 class="font-semibold">Call History</h2>
+            </div>
+            <button
+              id="clearHistoryBtn"
+              class="btn btn-sm bg-[#00A63E] hover:bg-green-900 rounded-full text-white"
+            >
+              Clear
+            </button>
+          </div>
+          <div id="historyList" class="flex flex-col gap-2">
+           
+          </div>
+        </aside>
+      </div>
+    </main>
 
-  <!-- JS file -->
-  <script src="Js/script.js"></script>
-</body>
+    <!-- JS  -->
+    <script src="Js/script.js"></script>
+  </body>
 </html>
