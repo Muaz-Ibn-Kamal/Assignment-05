@@ -50,3 +50,18 @@ document.getElementById("parentDiv").addEventListener("click", function(e) {
         console.log("Button clicked:", e.target.textContent);
     }
 });
+```
+### Q5. What is the difference between `preventDefault()` and `stopPropagation()` methods?
+
+| Method | What it does | Use case |
+|--------|--------------|----------|
+| `preventDefault()` | Prevents the browser's default behavior for an element. | Example: Preventing a form from submitting or a link from navigating. |
+| `stopPropagation()` | Stops the event from bubbling (or capturing) further up the DOM tree. | Example: Preventing a parent element's click handler from executing when a child is clicked. |
+
+**Example:**
+```javascript
+document.getElementById("myLink").addEventListener("click", function(e) {
+    e.preventDefault(); // The link won't navigate to another page
+    e.stopPropagation(); // The click won't trigger parent elements' click events
+});
+```
