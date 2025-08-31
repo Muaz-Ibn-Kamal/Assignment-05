@@ -85,7 +85,7 @@ document.addEventListener('click', async (e) => {
   }
 
   if (e.target.closest('.copy-btn')) {
-    const ok = await copyText(svc.number);
+    const ok = await copyTextToClipboard(svc.number);
     if (ok) {
       copyCount += 1;
       copyCountEl.textContent = copyCount;
