@@ -7,11 +7,7 @@
 - **querySelector** → Selects the **first element** that matches a CSS selector (id, class, tag, attribute etc.).
 - **querySelectorAll** → Selects **all elements** that match a CSS selector. It returns a NodeList which you can loop through.
 
-👉 In short:  
-- `getElementById("id")` → one element only  
-- `getElementsByClassName("class")` → many elements by class  
-- `querySelector(".class or #id")` → first match  
-- `querySelectorAll(".class")` → all matches  
+
 
 ---
 
@@ -26,8 +22,31 @@ Steps:
    - `prepend()` → adds inside at the beginning  
    - `insertBefore()` → adds before a specific element  
 
-Example:
-```js
-let p = document.createElement("p");
-p.innerText = "This is a new paragraph.";
-document.body.appendChild(p);
+
+
+### 3. What is Event Bubbling and how does it work?
+
+**Event Bubbling** is a mechanism in JavaScript where an event starts from the deepest (most specific) element that triggered it and then "bubbles up" to its parent elements in the DOM tree.  
+
+**How it works:**  
+- Suppose you have a `<button>` inside a `<div>` inside a `<body>`.  
+- If you click the button, the click event first triggers on the `<button>`, then moves up to the `<div>`, and finally to the `<body>`.  
+- This allows parent elements to detect and handle events that happened on their child elements.  
+
+---
+
+### 4. What is Event Delegation in JavaScript? Why is it useful?
+
+**Event Delegation** is a technique where instead of adding event listeners to multiple child elements, you attach a single event listener to a parent element. You then use the event object to determine which child element triggered the event.  
+
+**Why it is useful:**  
+- Reduces memory usage by using fewer event listeners.  
+- Makes it easier to handle dynamically added elements that weren't present when the page loaded.  
+
+**Example:**  
+```javascript
+document.getElementById("parentDiv").addEventListener("click", function(e) {
+    if(e.target && e.target.tagName === "BUTTON") {
+        console.log("Button clicked:", e.target.textContent);
+    }
+});
