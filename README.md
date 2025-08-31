@@ -24,7 +24,7 @@ Steps:
 
 
 
-### 3. What is Event Bubbling and how does it work?
+### Q3. What is Event Bubbling and how does it work?
 
 **Event Bubbling** is a mechanism in JavaScript where an event starts from the deepest (most specific) element that triggered it and then "bubbles up" to its parent elements in the DOM tree.  
 
@@ -35,7 +35,7 @@ Steps:
 
 ---
 
-### 4. What is Event Delegation in JavaScript? Why is it useful?
+### Q4. What is Event Delegation in JavaScript? Why is it useful?
 
 **Event Delegation** is a technique where instead of adding event listeners to multiple child elements, you attach a single event listener to a parent element. You then use the event object to determine which child element triggered the event.  
 
