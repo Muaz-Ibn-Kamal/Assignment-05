@@ -110,7 +110,7 @@ document.addEventListener('click', async (e) => {
 });
 
 document.addEventListener('keydown', (e) => {
-  if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.copy-btn, .call-btn, .heart-btn')) {
+  if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.copybtn, .callbtn, .heart-btn')) {
     e.preventDefault();
     e.target.click();
   }
